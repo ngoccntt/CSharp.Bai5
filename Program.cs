@@ -11,35 +11,57 @@ namespace CSharp.Bai5
         static void Main(string[] args)
         {
             int intA, intB, intC;
-            
-            double ketqua;
-            Console.WriteLine(" ------------ CHUONG TRINH GIAI PHUONG TRINH BAC 2 ------------ ");
-            Console.WriteLine(" ------------------------- ax^2 + bx + c =0 ------------------------- ");
+            double delta, x1, x2;
+            Console.WriteLine(" ----------- CHUONG TRINH GIAI PHUONG TRINH BAC 2 ----------- ");
+            Console.WriteLine(" --------------------- aX^2 + bX + c = 0 --------------------- ");
             Console.Write("Nhap a: ");
             intA = Convert.ToInt32(Console.ReadLine());
-            Console.Write("{0}", "Nhap b: ");
+            Console.Write("Nhap b: ");
             intB = Convert.ToInt32(Console.ReadLine());
-            Console.Write("{0}", "Nhap c: ");
+            Console.Write("Nhap c: ");
             intC = Convert.ToInt32(Console.ReadLine());
-            
+
+            if (intA == 0)
+            {
+                giaiPTbac1(intB, intC);
+            }
             else
             {
-                ketqua = (double)Math.Pow(2,3) - 4 * intA * intC;
-                Console.WriteLine(" Phuong trinh co 1 nghiem duy nhat x = {0}", ketqua);
+                delta = (double)Math.Pow(intB, 2) - 4 * intA * intC;
+                Console.WriteLine("Delta = {0}", delta);
+                if (delta < 0)
+                {
+                    Console.WriteLine("Phuong trinh VO NGHIEM");
+                }
+                if (delta == 0)
+                {
+                    Console.WriteLine("Phuong trinh co nghiem kep x1 = x2 = {0}", (double)(-intB / (2 * intA)));
+                }
+                if (delta > 0)
+                {
+                    x1 = (double)(-intB + Math.Sqrt(delta)) / (2 * intA);
+                    x2 = (double)(-intB - Math.Sqrt(delta)) / (2 * intA);
+                    Console.WriteLine("Phuong trinh co 2 nghiem phan biet la x1 = {0} va x2 = {1}", x1, x2);
+                }
             }
             Console.ReadKey();
         }
-    }
-}
-if ()
+
+        static void giaiPTbac1(int intA, int intB)
+        {
+            Console.WriteLine("Do a = 0 nen giai theo phuong trinh bac 1 doi voi bX + c = 0");
+            if (intA == 0 && intB == 0)
+            {
+                Console.WriteLine(" Phuong trinh co vo so nghiem");
+            }
+            else if (intA == 0 && intB != 0)
             {
                 Console.WriteLine(" Phuong trinh vo nghiem");
             }
-            else if ()
+            else
             {
-                Console.WriteLine(" Phuong trinh co nghiem kep");
+                Console.WriteLine(" Phuong trinh co 1 nghiem duy nhat x = {0}", (double)-intB / intA);
             }
-            else if ()
-            {
-                Console.WriteLine(" Phuong trinh co 2 nghiem phan biet");
-            }
+        }
+    }
+}
